@@ -1,0 +1,2859 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="1/24/2024 1:14:01 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DIINAA"
+  DTS:CreatorName="Diinaa\Dina"
+  DTS:DTSID="{A297E4DE-CB6E-4ACF-A227-3F9A2B69ABE9}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5397.1"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Fact_order_History"
+  DTS:PackageType="5"
+  DTS:VersionBuild="11"
+  DTS:VersionGUID="{A6FE345E-4498-4B14-8D39-DCFAC6C83FC1}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\DF_Fact_order_history"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{904EE704-DC98-4FD8-9E1E-7D5E6B36A43A}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DF_Fact_order_history"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DF_Fact_order_history\Fact_History_Source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Fact_History_Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">Select oh.order_id,history_id,status_id,
+        Cast(Recieved_At as date) as recieved_At,
+		Cast(Pending_delivery_at as date) as pending_delivery_at,
+		cast(Delivery_in_progress_at as date) as delivery_in_progress_at,
+		cast(Delivered_at as date) as delivered_at,
+		cast(returned_at as date) as Returned_at,
+		cast(cancelled_at as date) as Cancelled_at
+
+from All_orders_History aoh
+join order_history oh
+on aoh.order_id = oh.order_id</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DF_Fact_order_history\Fact_History_Source.Connections[OleDbConnection]"
+                  connectionManagerID="{3B099926-33BC-43CA-B693-FBE0A874970E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DIINAA_SQLDEV.gravity_books]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DF_Fact_order_history\Fact_History_Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF_Fact_order_history\Fact_History_Source.Outputs[OLE DB Source Output].Columns[order_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF_Fact_order_history\Fact_History_Source.Outputs[OLE DB Source Output].ExternalColumns[order_id]"
+                      lineageId="Package\DF_Fact_order_history\Fact_History_Source.Outputs[OLE DB Source Output].Columns[order_id]"
+                      name="order_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF_Fact_order_history\Fact_History_Source.Outputs[OLE DB Source Output].Columns[history_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF_Fact_order_history\Fact_History_Source.Outputs[OLE DB Source Output].ExternalColumns[history_id]"
+                      lineageId="Package\DF_Fact_order_history\Fact_History_Source.Outputs[OLE DB Source Output].Columns[history_id]"
+                      name="history_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF_Fact_order_history\Fact_History_Source.Outputs[OLE DB Source Output].Columns[status_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF_Fact_order_history\Fact_History_Source.Outputs[OLE DB Source Output].ExternalColumns[status_id]"
+                      lineageId="Package\DF_Fact_order_history\Fact_History_Source.Outputs[OLE DB Source Output].Columns[status_id]"
+                      name="status_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF_Fact_order_history\Fact_History_Source.Outputs[OLE DB Source Output].Columns[recieved_At]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF_Fact_order_history\Fact_History_Source.Outputs[OLE DB Source Output].ExternalColumns[recieved_At]"
+                      length="10"
+                      lineageId="Package\DF_Fact_order_history\Fact_History_Source.Outputs[OLE DB Source Output].Columns[recieved_At]"
+                      name="recieved_At"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF_Fact_order_history\Fact_History_Source.Outputs[OLE DB Source Output].Columns[pending_delivery_at]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF_Fact_order_history\Fact_History_Source.Outputs[OLE DB Source Output].ExternalColumns[pending_delivery_at]"
+                      length="10"
+                      lineageId="Package\DF_Fact_order_history\Fact_History_Source.Outputs[OLE DB Source Output].Columns[pending_delivery_at]"
+                      name="pending_delivery_at"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF_Fact_order_history\Fact_History_Source.Outputs[OLE DB Source Output].Columns[delivery_in_progress_at]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF_Fact_order_history\Fact_History_Source.Outputs[OLE DB Source Output].ExternalColumns[delivery_in_progress_at]"
+                      length="10"
+                      lineageId="Package\DF_Fact_order_history\Fact_History_Source.Outputs[OLE DB Source Output].Columns[delivery_in_progress_at]"
+                      name="delivery_in_progress_at"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF_Fact_order_history\Fact_History_Source.Outputs[OLE DB Source Output].Columns[delivered_at]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF_Fact_order_history\Fact_History_Source.Outputs[OLE DB Source Output].ExternalColumns[delivered_at]"
+                      length="10"
+                      lineageId="Package\DF_Fact_order_history\Fact_History_Source.Outputs[OLE DB Source Output].Columns[delivered_at]"
+                      name="delivered_at"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF_Fact_order_history\Fact_History_Source.Outputs[OLE DB Source Output].Columns[Returned_at]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF_Fact_order_history\Fact_History_Source.Outputs[OLE DB Source Output].ExternalColumns[Returned_at]"
+                      length="10"
+                      lineageId="Package\DF_Fact_order_history\Fact_History_Source.Outputs[OLE DB Source Output].Columns[Returned_at]"
+                      name="Returned_at"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF_Fact_order_history\Fact_History_Source.Outputs[OLE DB Source Output].Columns[Cancelled_at]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF_Fact_order_history\Fact_History_Source.Outputs[OLE DB Source Output].ExternalColumns[Cancelled_at]"
+                      length="10"
+                      lineageId="Package\DF_Fact_order_history\Fact_History_Source.Outputs[OLE DB Source Output].Columns[Cancelled_at]"
+                      name="Cancelled_at"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DF_Fact_order_history\Fact_History_Source.Outputs[OLE DB Source Output].ExternalColumns[order_id]"
+                      dataType="i4"
+                      name="order_id" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Fact_order_history\Fact_History_Source.Outputs[OLE DB Source Output].ExternalColumns[history_id]"
+                      dataType="i4"
+                      name="history_id" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Fact_order_history\Fact_History_Source.Outputs[OLE DB Source Output].ExternalColumns[status_id]"
+                      dataType="i4"
+                      name="status_id" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Fact_order_history\Fact_History_Source.Outputs[OLE DB Source Output].ExternalColumns[recieved_At]"
+                      dataType="wstr"
+                      length="10"
+                      name="recieved_At" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Fact_order_history\Fact_History_Source.Outputs[OLE DB Source Output].ExternalColumns[pending_delivery_at]"
+                      dataType="wstr"
+                      length="10"
+                      name="pending_delivery_at" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Fact_order_history\Fact_History_Source.Outputs[OLE DB Source Output].ExternalColumns[delivery_in_progress_at]"
+                      dataType="wstr"
+                      length="10"
+                      name="delivery_in_progress_at" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Fact_order_history\Fact_History_Source.Outputs[OLE DB Source Output].ExternalColumns[delivered_at]"
+                      dataType="wstr"
+                      length="10"
+                      name="delivered_at" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Fact_order_history\Fact_History_Source.Outputs[OLE DB Source Output].ExternalColumns[Returned_at]"
+                      dataType="wstr"
+                      length="10"
+                      name="Returned_at" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Fact_order_history\Fact_History_Source.Outputs[OLE DB Source Output].ExternalColumns[Cancelled_at]"
+                      dataType="wstr"
+                      length="10"
+                      name="Cancelled_at" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DF_Fact_order_history\Fact_History_Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF_Fact_order_history\Fact_History_Source.Outputs[OLE DB Source Error Output].Columns[order_id]"
+                      dataType="i4"
+                      lineageId="Package\DF_Fact_order_history\Fact_History_Source.Outputs[OLE DB Source Error Output].Columns[order_id]"
+                      name="order_id" />
+                    <outputColumn
+                      refId="Package\DF_Fact_order_history\Fact_History_Source.Outputs[OLE DB Source Error Output].Columns[history_id]"
+                      dataType="i4"
+                      lineageId="Package\DF_Fact_order_history\Fact_History_Source.Outputs[OLE DB Source Error Output].Columns[history_id]"
+                      name="history_id" />
+                    <outputColumn
+                      refId="Package\DF_Fact_order_history\Fact_History_Source.Outputs[OLE DB Source Error Output].Columns[status_id]"
+                      dataType="i4"
+                      lineageId="Package\DF_Fact_order_history\Fact_History_Source.Outputs[OLE DB Source Error Output].Columns[status_id]"
+                      name="status_id" />
+                    <outputColumn
+                      refId="Package\DF_Fact_order_history\Fact_History_Source.Outputs[OLE DB Source Error Output].Columns[recieved_At]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\DF_Fact_order_history\Fact_History_Source.Outputs[OLE DB Source Error Output].Columns[recieved_At]"
+                      name="recieved_At" />
+                    <outputColumn
+                      refId="Package\DF_Fact_order_history\Fact_History_Source.Outputs[OLE DB Source Error Output].Columns[pending_delivery_at]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\DF_Fact_order_history\Fact_History_Source.Outputs[OLE DB Source Error Output].Columns[pending_delivery_at]"
+                      name="pending_delivery_at" />
+                    <outputColumn
+                      refId="Package\DF_Fact_order_history\Fact_History_Source.Outputs[OLE DB Source Error Output].Columns[delivery_in_progress_at]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\DF_Fact_order_history\Fact_History_Source.Outputs[OLE DB Source Error Output].Columns[delivery_in_progress_at]"
+                      name="delivery_in_progress_at" />
+                    <outputColumn
+                      refId="Package\DF_Fact_order_history\Fact_History_Source.Outputs[OLE DB Source Error Output].Columns[delivered_at]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\DF_Fact_order_history\Fact_History_Source.Outputs[OLE DB Source Error Output].Columns[delivered_at]"
+                      name="delivered_at" />
+                    <outputColumn
+                      refId="Package\DF_Fact_order_history\Fact_History_Source.Outputs[OLE DB Source Error Output].Columns[Returned_at]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\DF_Fact_order_history\Fact_History_Source.Outputs[OLE DB Source Error Output].Columns[Returned_at]"
+                      name="Returned_at" />
+                    <outputColumn
+                      refId="Package\DF_Fact_order_history\Fact_History_Source.Outputs[OLE DB Source Error Output].Columns[Cancelled_at]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\DF_Fact_order_history\Fact_History_Source.Outputs[OLE DB Source Error Output].Columns[Cancelled_at]"
+                      name="Cancelled_at" />
+                    <outputColumn
+                      refId="Package\DF_Fact_order_history\Fact_History_Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DF_Fact_order_history\Fact_History_Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DF_Fact_order_history\Fact_History_Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DF_Fact_order_history\Fact_History_Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DF_Fact_order_history\Lookup_Cancelled_DateSK"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup_Cancelled_DateSK"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select DateSK as Cancelled_DateSK,
+ cast([Date] as Date) as OrderDate
+from Gravity_Books_DW.dbo.DimDate</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select DateSK as Cancelled_DateSK,
+ cast([Date] as Date) as OrderDate
+from Gravity_Books_DW.dbo.DimDate) [refTable]
+where [refTable].[OrderDate] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="Cancelled_DateSK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="OrderDate" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\DF_Fact_order_history\Fact_History_Source.Outputs[OLE DB Source Output].Columns[Cancelled_at]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DF_Fact_order_history\Lookup_Cancelled_DateSK.Connections[OleDbConnection]"
+                  connectionManagerID="{066A7ECD-E8B1-46BA-8B3B-0CFBF987C903}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DIINAA_SQLDEV.Gravity_Books_DW]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DF_Fact_order_history\Lookup_Cancelled_DateSK.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DF_Fact_order_history\Lookup_Cancelled_DateSK.Inputs[Lookup Input].Columns[Cancelled_at]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="Cancelled_at"
+                      lineageId="Package\DF_Fact_order_history\Fact_History_Source.Outputs[OLE DB Source Output].Columns[Cancelled_at]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">OrderDate</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DF_Fact_order_history\Lookup_Cancelled_DateSK.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="IgnoreFailure"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\DF_Fact_order_history\Lookup_Cancelled_DateSK.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF_Fact_order_history\Lookup_Cancelled_DateSK.Outputs[Lookup Match Output].Columns[Cancelled_DateSK]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\DF_Fact_order_history\Lookup_Cancelled_DateSK.Outputs[Lookup Match Output].Columns[Cancelled_DateSK]"
+                      name="Cancelled_DateSK"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">Cancelled_DateSK</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DF_Fact_order_history\Lookup_Cancelled_DateSK.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\DF_Fact_order_history\Lookup_Cancelled_DateSK.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DF_Fact_order_history\Lookup_Cancelled_DateSK.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\DF_Fact_order_history\Lookup_Cancelled_DateSK.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF_Fact_order_history\Lookup_Cancelled_DateSK.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DF_Fact_order_history\Lookup_Cancelled_DateSK.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DF_Fact_order_history\Lookup_Cancelled_DateSK.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DF_Fact_order_history\Lookup_Cancelled_DateSK.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DF_Fact_order_history\Lookup_Delivered_DateSK"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup_Delivered_DateSK"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select DateSK as Delivered_DateSK,
+ cast([Date] as Date) as OrderDate
+from Gravity_Books_DW.dbo.DimDate</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select DateSK as Delivered_DateSK,
+ cast([Date] as Date) as OrderDate
+from Gravity_Books_DW.dbo.DimDate) [refTable]
+where [refTable].[OrderDate] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="Delivered_DateSK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="OrderDate" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\DF_Fact_order_history\Fact_History_Source.Outputs[OLE DB Source Output].Columns[delivered_at]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DF_Fact_order_history\Lookup_Delivered_DateSK.Connections[OleDbConnection]"
+                  connectionManagerID="{066A7ECD-E8B1-46BA-8B3B-0CFBF987C903}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DIINAA_SQLDEV.Gravity_Books_DW]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DF_Fact_order_history\Lookup_Delivered_DateSK.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DF_Fact_order_history\Lookup_Delivered_DateSK.Inputs[Lookup Input].Columns[delivered_at]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="delivered_at"
+                      lineageId="Package\DF_Fact_order_history\Fact_History_Source.Outputs[OLE DB Source Output].Columns[delivered_at]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">OrderDate</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DF_Fact_order_history\Lookup_Delivered_DateSK.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="IgnoreFailure"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\DF_Fact_order_history\Lookup_Delivered_DateSK.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF_Fact_order_history\Lookup_Delivered_DateSK.Outputs[Lookup Match Output].Columns[Delivered_DateSK]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\DF_Fact_order_history\Lookup_Delivered_DateSK.Outputs[Lookup Match Output].Columns[Delivered_DateSK]"
+                      name="Delivered_DateSK"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">Delivered_DateSK</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DF_Fact_order_history\Lookup_Delivered_DateSK.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\DF_Fact_order_history\Lookup_Delivered_DateSK.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DF_Fact_order_history\Lookup_Delivered_DateSK.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\DF_Fact_order_history\Lookup_Delivered_DateSK.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF_Fact_order_history\Lookup_Delivered_DateSK.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DF_Fact_order_history\Lookup_Delivered_DateSK.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DF_Fact_order_history\Lookup_Delivered_DateSK.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DF_Fact_order_history\Lookup_Delivered_DateSK.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DF_Fact_order_history\Lookup_DeliveryInProgress_DateSk"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup_DeliveryInProgress_DateSk"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select DateSK as DeliveryInProgress_DateSK,
+ cast([Date] as Date) as OrderDate
+from Gravity_Books_DW.dbo.DimDate</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select DateSK as DeliveryInProgress_DateSK,
+ cast([Date] as Date) as OrderDate
+from Gravity_Books_DW.dbo.DimDate) [refTable]
+where [refTable].[OrderDate] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="DeliveryInProgress_DateSK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="OrderDate" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\DF_Fact_order_history\Fact_History_Source.Outputs[OLE DB Source Output].Columns[delivery_in_progress_at]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DF_Fact_order_history\Lookup_DeliveryInProgress_DateSk.Connections[OleDbConnection]"
+                  connectionManagerID="{066A7ECD-E8B1-46BA-8B3B-0CFBF987C903}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DIINAA_SQLDEV.Gravity_Books_DW]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DF_Fact_order_history\Lookup_DeliveryInProgress_DateSk.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DF_Fact_order_history\Lookup_DeliveryInProgress_DateSk.Inputs[Lookup Input].Columns[delivery_in_progress_at]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="delivery_in_progress_at"
+                      lineageId="Package\DF_Fact_order_history\Fact_History_Source.Outputs[OLE DB Source Output].Columns[delivery_in_progress_at]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">OrderDate</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DF_Fact_order_history\Lookup_DeliveryInProgress_DateSk.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="IgnoreFailure"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\DF_Fact_order_history\Lookup_DeliveryInProgress_DateSk.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF_Fact_order_history\Lookup_DeliveryInProgress_DateSk.Outputs[Lookup Match Output].Columns[DeliveryInProgress_DateSK]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\DF_Fact_order_history\Lookup_DeliveryInProgress_DateSk.Outputs[Lookup Match Output].Columns[DeliveryInProgress_DateSK]"
+                      name="DeliveryInProgress_DateSK"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">DeliveryInProgress_DateSK</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DF_Fact_order_history\Lookup_DeliveryInProgress_DateSk.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\DF_Fact_order_history\Lookup_DeliveryInProgress_DateSk.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DF_Fact_order_history\Lookup_DeliveryInProgress_DateSk.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\DF_Fact_order_history\Lookup_DeliveryInProgress_DateSk.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF_Fact_order_history\Lookup_DeliveryInProgress_DateSk.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DF_Fact_order_history\Lookup_DeliveryInProgress_DateSk.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DF_Fact_order_history\Lookup_DeliveryInProgress_DateSk.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DF_Fact_order_history\Lookup_DeliveryInProgress_DateSk.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DF_Fact_order_history\Lookup_For_Status_SK"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup_For_Status_SK"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select Status_SK, StatusID_BK
+from Gravity_Books_DW.dbo.DimStatus
+where is_current=1</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select Status_SK, StatusID_BK
+from Gravity_Books_DW.dbo.DimStatus
+where is_current=1) [refTable]
+where [refTable].[StatusID_BK] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="Status_SK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="StatusID_BK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\DF_Fact_order_history\Fact_History_Source.Outputs[OLE DB Source Output].Columns[status_id]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DF_Fact_order_history\Lookup_For_Status_SK.Connections[OleDbConnection]"
+                  connectionManagerID="{066A7ECD-E8B1-46BA-8B3B-0CFBF987C903}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DIINAA_SQLDEV.Gravity_Books_DW]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DF_Fact_order_history\Lookup_For_Status_SK.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DF_Fact_order_history\Lookup_For_Status_SK.Inputs[Lookup Input].Columns[status_id]"
+                      cachedDataType="i4"
+                      cachedName="status_id"
+                      lineageId="Package\DF_Fact_order_history\Fact_History_Source.Outputs[OLE DB Source Output].Columns[status_id]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">StatusID_BK</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DF_Fact_order_history\Lookup_For_Status_SK.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="IgnoreFailure"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\DF_Fact_order_history\Lookup_For_Status_SK.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF_Fact_order_history\Lookup_For_Status_SK.Outputs[Lookup Match Output].Columns[Status_SK]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\DF_Fact_order_history\Lookup_For_Status_SK.Outputs[Lookup Match Output].Columns[Status_SK]"
+                      name="Status_SK"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">Status_SK</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DF_Fact_order_history\Lookup_For_Status_SK.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\DF_Fact_order_history\Lookup_For_Status_SK.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DF_Fact_order_history\Lookup_For_Status_SK.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\DF_Fact_order_history\Lookup_For_Status_SK.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF_Fact_order_history\Lookup_For_Status_SK.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DF_Fact_order_history\Lookup_For_Status_SK.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DF_Fact_order_history\Lookup_For_Status_SK.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DF_Fact_order_history\Lookup_For_Status_SK.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DF_Fact_order_history\Lookup_pending_Delivery_DateSK"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup_pending_Delivery_DateSK"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select DateSK as PedningDelivery_DateSK,
+ cast([Date] as Date) as OrderDate
+from Gravity_Books_DW.dbo.DimDate</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select DateSK as PedningDelivery_DateSK,
+ cast([Date] as Date) as OrderDate
+from Gravity_Books_DW.dbo.DimDate) [refTable]
+where [refTable].[OrderDate] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="PedningDelivery_DateSK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="OrderDate" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\DF_Fact_order_history\Fact_History_Source.Outputs[OLE DB Source Output].Columns[pending_delivery_at]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DF_Fact_order_history\Lookup_pending_Delivery_DateSK.Connections[OleDbConnection]"
+                  connectionManagerID="{066A7ECD-E8B1-46BA-8B3B-0CFBF987C903}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DIINAA_SQLDEV.Gravity_Books_DW]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DF_Fact_order_history\Lookup_pending_Delivery_DateSK.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DF_Fact_order_history\Lookup_pending_Delivery_DateSK.Inputs[Lookup Input].Columns[pending_delivery_at]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="pending_delivery_at"
+                      lineageId="Package\DF_Fact_order_history\Fact_History_Source.Outputs[OLE DB Source Output].Columns[pending_delivery_at]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">OrderDate</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DF_Fact_order_history\Lookup_pending_Delivery_DateSK.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="IgnoreFailure"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\DF_Fact_order_history\Lookup_pending_Delivery_DateSK.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF_Fact_order_history\Lookup_pending_Delivery_DateSK.Outputs[Lookup Match Output].Columns[PedningDelivery_DateSK]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\DF_Fact_order_history\Lookup_pending_Delivery_DateSK.Outputs[Lookup Match Output].Columns[PedningDelivery_DateSK]"
+                      name="PedningDelivery_DateSK"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">PedningDelivery_DateSK</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DF_Fact_order_history\Lookup_pending_Delivery_DateSK.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\DF_Fact_order_history\Lookup_pending_Delivery_DateSK.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DF_Fact_order_history\Lookup_pending_Delivery_DateSK.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\DF_Fact_order_history\Lookup_pending_Delivery_DateSK.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF_Fact_order_history\Lookup_pending_Delivery_DateSK.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DF_Fact_order_history\Lookup_pending_Delivery_DateSK.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DF_Fact_order_history\Lookup_pending_Delivery_DateSK.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DF_Fact_order_history\Lookup_pending_Delivery_DateSK.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DF_Fact_order_history\Lookup_Recieved_at_dateSK"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup_Recieved_at_dateSK"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select DateSK as Recieved_DateSK
+, cast([Date] as Date) as OrderDate
+from Gravity_Books_DW.dbo.DimDate</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select DateSK as Recieved_DateSK
+, cast([Date] as Date) as OrderDate
+from Gravity_Books_DW.dbo.DimDate) [refTable]
+where [refTable].[OrderDate] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="Recieved_DateSK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="OrderDate" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\DF_Fact_order_history\Fact_History_Source.Outputs[OLE DB Source Output].Columns[recieved_At]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DF_Fact_order_history\Lookup_Recieved_at_dateSK.Connections[OleDbConnection]"
+                  connectionManagerID="{066A7ECD-E8B1-46BA-8B3B-0CFBF987C903}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DIINAA_SQLDEV.Gravity_Books_DW]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DF_Fact_order_history\Lookup_Recieved_at_dateSK.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DF_Fact_order_history\Lookup_Recieved_at_dateSK.Inputs[Lookup Input].Columns[recieved_At]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="recieved_At"
+                      lineageId="Package\DF_Fact_order_history\Fact_History_Source.Outputs[OLE DB Source Output].Columns[recieved_At]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">OrderDate</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DF_Fact_order_history\Lookup_Recieved_at_dateSK.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\DF_Fact_order_history\Lookup_Recieved_at_dateSK.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF_Fact_order_history\Lookup_Recieved_at_dateSK.Outputs[Lookup Match Output].Columns[Recieved_DateSK]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\DF_Fact_order_history\Lookup_Recieved_at_dateSK.Outputs[Lookup Match Output].Columns[Recieved_DateSK]"
+                      name="Recieved_DateSK"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">Recieved_DateSK</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DF_Fact_order_history\Lookup_Recieved_at_dateSK.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\DF_Fact_order_history\Lookup_Recieved_at_dateSK.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DF_Fact_order_history\Lookup_Recieved_at_dateSK.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\DF_Fact_order_history\Lookup_Recieved_at_dateSK.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF_Fact_order_history\Lookup_Recieved_at_dateSK.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DF_Fact_order_history\Lookup_Recieved_at_dateSK.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DF_Fact_order_history\Lookup_Recieved_at_dateSK.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DF_Fact_order_history\Lookup_Recieved_at_dateSK.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DF_Fact_order_history\Lookup_Returned_DateSK"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup_Returned_DateSK"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select DateSK as Returned_DateSK,
+ cast([Date] as Date) as OrderDate
+from Gravity_Books_DW.dbo.DimDate</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select DateSK as Returned_DateSK,
+ cast([Date] as Date) as OrderDate
+from Gravity_Books_DW.dbo.DimDate) [refTable]
+where [refTable].[OrderDate] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="Returned_DateSK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="OrderDate" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\DF_Fact_order_history\Fact_History_Source.Outputs[OLE DB Source Output].Columns[Returned_at]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DF_Fact_order_history\Lookup_Returned_DateSK.Connections[OleDbConnection]"
+                  connectionManagerID="{066A7ECD-E8B1-46BA-8B3B-0CFBF987C903}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DIINAA_SQLDEV.Gravity_Books_DW]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DF_Fact_order_history\Lookup_Returned_DateSK.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DF_Fact_order_history\Lookup_Returned_DateSK.Inputs[Lookup Input].Columns[Returned_at]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="Returned_at"
+                      lineageId="Package\DF_Fact_order_history\Fact_History_Source.Outputs[OLE DB Source Output].Columns[Returned_at]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">OrderDate</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DF_Fact_order_history\Lookup_Returned_DateSK.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="IgnoreFailure"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\DF_Fact_order_history\Lookup_Returned_DateSK.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF_Fact_order_history\Lookup_Returned_DateSK.Outputs[Lookup Match Output].Columns[Returned_DateSK]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\DF_Fact_order_history\Lookup_Returned_DateSK.Outputs[Lookup Match Output].Columns[Returned_DateSK]"
+                      name="Returned_DateSK"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">Returned_DateSK</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DF_Fact_order_history\Lookup_Returned_DateSK.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\DF_Fact_order_history\Lookup_Returned_DateSK.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DF_Fact_order_history\Lookup_Returned_DateSK.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\DF_Fact_order_history\Lookup_Returned_DateSK.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF_Fact_order_history\Lookup_Returned_DateSK.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DF_Fact_order_history\Lookup_Returned_DateSK.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DF_Fact_order_history\Lookup_Returned_DateSK.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DF_Fact_order_history\Lookup_Returned_DateSK.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DF_Fact_order_history\OLE DB Command"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+              name="OLE DB Command"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE [dbo].[Fact_Order_History] SET [Cancelled_at_Date_fk] = ?,[Delivered_at_Date_fk] = ?,[Delivery_in_Progress_Date_fk] = ?,[History_ID] = ?,[Pending_delivery_at_Date_fk] = ?,[Recived_at_Date_fk] = ?,[Returned_at_Date_fk] = ?,[StatusID_FK] = ? WHERE [orderID_BK] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DF_Fact_order_history\OLE DB Command.Connections[OleDbConnection]"
+                  connectionManagerID="{066A7ECD-E8B1-46BA-8B3B-0CFBF987C903}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DIINAA_SQLDEV.Gravity_Books_DW]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DF_Fact_order_history\OLE DB Command.Inputs[OLE DB Command Input]"
+                  errorOrTruncationOperation="Command Execution"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Command Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DF_Fact_order_history\OLE DB Command.Inputs[OLE DB Command Input].Columns[Cancelled_DateSK]"
+                      cachedDataType="i4"
+                      cachedName="Cancelled_DateSK"
+                      externalMetadataColumnId="Package\DF_Fact_order_history\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      lineageId="Package\DF_Fact_order_history\Lookup_Cancelled_DateSK.Outputs[Lookup Match Output].Columns[Cancelled_DateSK]" />
+                    <inputColumn
+                      refId="Package\DF_Fact_order_history\OLE DB Command.Inputs[OLE DB Command Input].Columns[Delivered_DateSK]"
+                      cachedDataType="i4"
+                      cachedName="Delivered_DateSK"
+                      externalMetadataColumnId="Package\DF_Fact_order_history\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      lineageId="Package\DF_Fact_order_history\Lookup_Delivered_DateSK.Outputs[Lookup Match Output].Columns[Delivered_DateSK]" />
+                    <inputColumn
+                      refId="Package\DF_Fact_order_history\OLE DB Command.Inputs[OLE DB Command Input].Columns[DeliveryInProgress_DateSK]"
+                      cachedDataType="i4"
+                      cachedName="DeliveryInProgress_DateSK"
+                      externalMetadataColumnId="Package\DF_Fact_order_history\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                      lineageId="Package\DF_Fact_order_history\Lookup_DeliveryInProgress_DateSk.Outputs[Lookup Match Output].Columns[DeliveryInProgress_DateSK]" />
+                    <inputColumn
+                      refId="Package\DF_Fact_order_history\OLE DB Command.Inputs[OLE DB Command Input].Columns[history_id]"
+                      cachedDataType="i4"
+                      cachedName="history_id"
+                      externalMetadataColumnId="Package\DF_Fact_order_history\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                      lineageId="Package\DF_Fact_order_history\Fact_History_Source.Outputs[OLE DB Source Output].Columns[history_id]" />
+                    <inputColumn
+                      refId="Package\DF_Fact_order_history\OLE DB Command.Inputs[OLE DB Command Input].Columns[order_id]"
+                      cachedDataType="i4"
+                      cachedName="order_id"
+                      externalMetadataColumnId="Package\DF_Fact_order_history\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_8]"
+                      lineageId="Package\DF_Fact_order_history\Fact_History_Source.Outputs[OLE DB Source Output].Columns[order_id]" />
+                    <inputColumn
+                      refId="Package\DF_Fact_order_history\OLE DB Command.Inputs[OLE DB Command Input].Columns[PedningDelivery_DateSK]"
+                      cachedDataType="i4"
+                      cachedName="PedningDelivery_DateSK"
+                      externalMetadataColumnId="Package\DF_Fact_order_history\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_4]"
+                      lineageId="Package\DF_Fact_order_history\Lookup_pending_Delivery_DateSK.Outputs[Lookup Match Output].Columns[PedningDelivery_DateSK]" />
+                    <inputColumn
+                      refId="Package\DF_Fact_order_history\OLE DB Command.Inputs[OLE DB Command Input].Columns[Recieved_DateSK]"
+                      cachedDataType="i4"
+                      cachedName="Recieved_DateSK"
+                      externalMetadataColumnId="Package\DF_Fact_order_history\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_5]"
+                      lineageId="Package\DF_Fact_order_history\Lookup_Recieved_at_dateSK.Outputs[Lookup Match Output].Columns[Recieved_DateSK]" />
+                    <inputColumn
+                      refId="Package\DF_Fact_order_history\OLE DB Command.Inputs[OLE DB Command Input].Columns[Returned_DateSK]"
+                      cachedDataType="i4"
+                      cachedName="Returned_DateSK"
+                      externalMetadataColumnId="Package\DF_Fact_order_history\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_6]"
+                      lineageId="Package\DF_Fact_order_history\Lookup_Returned_DateSK.Outputs[Lookup Match Output].Columns[Returned_DateSK]" />
+                    <inputColumn
+                      refId="Package\DF_Fact_order_history\OLE DB Command.Inputs[OLE DB Command Input].Columns[Status_SK]"
+                      cachedDataType="i4"
+                      cachedName="Status_SK"
+                      externalMetadataColumnId="Package\DF_Fact_order_history\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_7]"
+                      lineageId="Package\DF_Fact_order_history\Lookup_For_Status_SK.Outputs[Lookup Match Output].Columns[Status_SK]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DF_Fact_order_history\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      dataType="i4"
+                      name="Param_0">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DF_Fact_order_history\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      dataType="i4"
+                      name="Param_1">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DF_Fact_order_history\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                      dataType="i4"
+                      name="Param_2">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DF_Fact_order_history\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                      dataType="i4"
+                      name="Param_3">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DF_Fact_order_history\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_4]"
+                      dataType="i4"
+                      name="Param_4">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DF_Fact_order_history\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_5]"
+                      dataType="i4"
+                      name="Param_5">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DF_Fact_order_history\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_6]"
+                      dataType="i4"
+                      name="Param_6">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DF_Fact_order_history\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_7]"
+                      dataType="i4"
+                      name="Param_7">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DF_Fact_order_history\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_8]"
+                      dataType="i4"
+                      name="Param_8">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DF_Fact_order_history\OLE DB Command.Outputs[OLE DB Command Output]"
+                  exclusionGroup="1"
+                  name="OLE DB Command Output"
+                  synchronousInputId="Package\DF_Fact_order_history\OLE DB Command.Inputs[OLE DB Command Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DF_Fact_order_history\OLE DB Command.Outputs[OLE DB Command Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Command Error Output"
+                  synchronousInputId="Package\DF_Fact_order_history\OLE DB Command.Inputs[OLE DB Command Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF_Fact_order_history\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DF_Fact_order_history\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DF_Fact_order_history\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DF_Fact_order_history\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DF_Fact_order_history\Slowly Changing Dimension"
+              componentClassID="Microsoft.SCD"
+              contactInfo="Slowly Changing Dimension;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;3"
+              description="Updates a SQL Server Analysis Services data warehouse dimension. Update dimension records that are already present and  insert dimension records that aren't. For example, update the DimProduct table of the AdventureWorksDW OLAP database with data from the Products table in the AdventureWorks OLTP database."
+              name="Slowly Changing Dimension"
+              version="3">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SELECT statement used to create a schema rowset."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT [Cancelled_at_Date_fk], [Delivered_at_Date_fk], [Delivery_in_Progress_Date_fk], [History_ID], [orderID_BK], [Pending_delivery_at_Date_fk], [Recived_at_Date_fk], [Returned_at_Date_fk], [StatusID_FK] FROM [dbo].[Fact_Order_History]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the WHERE clause in the SELECT statement that selects the current row among rows with identical business keys."
+                  name="CurrentRowWhere"></property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether historical attribute updates are directed to the transformation output for changing attribute updates."
+                  name="UpdateChangingAttributeHistory">true</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the transformation fails when columns with fixed attributes contain changes."
+                  name="FailOnFixedAttributeChange">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the column name for the inferred member."
+                  name="InferredMemberIndicator"></property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether inferred member updates are detected."
+                  name="EnableInferredMember">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the transformation fails when a lookup of an existing record fails."
+                  name="FailOnLookupFailure">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies that all rows in the input are new or the transformation detects the change type."
+                  name="IncomingRowChangeType"
+                  typeConverter="IncomingRowChangeType">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DF_Fact_order_history\Slowly Changing Dimension.Connections[LookupConnection]"
+                  connectionManagerID="{066A7ECD-E8B1-46BA-8B3B-0CFBF987C903}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DIINAA_SQLDEV.Gravity_Books_DW]"
+                  description="Defines the connection to use for lookups in the dimension table"
+                  name="LookupConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DF_Fact_order_history\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]"
+                  name="Slowly Changing Dimension Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DF_Fact_order_history\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[Cancelled_DateSK]"
+                      cachedDataType="i4"
+                      cachedName="Cancelled_DateSK"
+                      externalMetadataColumnId="Package\DF_Fact_order_history\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Cancelled_at_Date_fk]"
+                      lineageId="Package\DF_Fact_order_history\Lookup_Cancelled_DateSK.Outputs[Lookup Match Output].Columns[Cancelled_DateSK]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">2</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF_Fact_order_history\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[Delivered_DateSK]"
+                      cachedDataType="i4"
+                      cachedName="Delivered_DateSK"
+                      externalMetadataColumnId="Package\DF_Fact_order_history\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Delivered_at_Date_fk]"
+                      lineageId="Package\DF_Fact_order_history\Lookup_Delivered_DateSK.Outputs[Lookup Match Output].Columns[Delivered_DateSK]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">2</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF_Fact_order_history\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[DeliveryInProgress_DateSK]"
+                      cachedDataType="i4"
+                      cachedName="DeliveryInProgress_DateSK"
+                      externalMetadataColumnId="Package\DF_Fact_order_history\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Delivery_in_Progress_Date_fk]"
+                      lineageId="Package\DF_Fact_order_history\Lookup_DeliveryInProgress_DateSk.Outputs[Lookup Match Output].Columns[DeliveryInProgress_DateSK]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">2</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF_Fact_order_history\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[history_id]"
+                      cachedDataType="i4"
+                      cachedName="history_id"
+                      externalMetadataColumnId="Package\DF_Fact_order_history\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[History_ID]"
+                      lineageId="Package\DF_Fact_order_history\Fact_History_Source.Outputs[OLE DB Source Output].Columns[history_id]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">2</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF_Fact_order_history\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[order_id]"
+                      cachedDataType="i4"
+                      cachedName="order_id"
+                      externalMetadataColumnId="Package\DF_Fact_order_history\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[orderID_BK]"
+                      lineageId="Package\DF_Fact_order_history\Fact_History_Source.Outputs[OLE DB Source Output].Columns[order_id]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF_Fact_order_history\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[PedningDelivery_DateSK]"
+                      cachedDataType="i4"
+                      cachedName="PedningDelivery_DateSK"
+                      externalMetadataColumnId="Package\DF_Fact_order_history\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Pending_delivery_at_Date_fk]"
+                      lineageId="Package\DF_Fact_order_history\Lookup_pending_Delivery_DateSK.Outputs[Lookup Match Output].Columns[PedningDelivery_DateSK]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">2</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF_Fact_order_history\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[Recieved_DateSK]"
+                      cachedDataType="i4"
+                      cachedName="Recieved_DateSK"
+                      externalMetadataColumnId="Package\DF_Fact_order_history\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Recived_at_Date_fk]"
+                      lineageId="Package\DF_Fact_order_history\Lookup_Recieved_at_dateSK.Outputs[Lookup Match Output].Columns[Recieved_DateSK]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">2</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF_Fact_order_history\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[Returned_DateSK]"
+                      cachedDataType="i4"
+                      cachedName="Returned_DateSK"
+                      externalMetadataColumnId="Package\DF_Fact_order_history\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Returned_at_Date_fk]"
+                      lineageId="Package\DF_Fact_order_history\Lookup_Returned_DateSK.Outputs[Lookup Match Output].Columns[Returned_DateSK]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">2</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF_Fact_order_history\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[Status_SK]"
+                      cachedDataType="i4"
+                      cachedName="Status_SK"
+                      externalMetadataColumnId="Package\DF_Fact_order_history\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[StatusID_FK]"
+                      lineageId="Package\DF_Fact_order_history\Lookup_For_Status_SK.Outputs[Lookup Match Output].Columns[Status_SK]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">2</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DF_Fact_order_history\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Cancelled_at_Date_fk]"
+                      dataType="i4"
+                      name="Cancelled_at_Date_fk" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Fact_order_history\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Delivered_at_Date_fk]"
+                      dataType="i4"
+                      name="Delivered_at_Date_fk" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Fact_order_history\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Delivery_in_Progress_Date_fk]"
+                      dataType="i4"
+                      name="Delivery_in_Progress_Date_fk" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Fact_order_history\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[History_ID]"
+                      dataType="i4"
+                      name="History_ID" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Fact_order_history\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[orderID_BK]"
+                      dataType="i4"
+                      name="orderID_BK" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Fact_order_history\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Pending_delivery_at_Date_fk]"
+                      dataType="i4"
+                      name="Pending_delivery_at_Date_fk" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Fact_order_history\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Recived_at_Date_fk]"
+                      dataType="i4"
+                      name="Recived_at_Date_fk" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Fact_order_history\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[Returned_at_Date_fk]"
+                      dataType="i4"
+                      name="Returned_at_Date_fk" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Fact_order_history\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[StatusID_FK]"
+                      dataType="i4"
+                      name="StatusID_FK" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DF_Fact_order_history\Slowly Changing Dimension.Outputs[Unchanged Output]"
+                  description="Unchanged rows"
+                  exclusionGroup="1"
+                  name="Unchanged Output"
+                  synchronousInputId="Package\DF_Fact_order_history\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DF_Fact_order_history\Slowly Changing Dimension.Outputs[New Output]"
+                  description="New rows"
+                  exclusionGroup="1"
+                  name="New Output"
+                  synchronousInputId="Package\DF_Fact_order_history\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DF_Fact_order_history\Slowly Changing Dimension.Outputs[Fixed Attribute Output]"
+                  description="Rows with changes in columns tagged FixedAttribute"
+                  exclusionGroup="1"
+                  name="Fixed Attribute Output"
+                  synchronousInputId="Package\DF_Fact_order_history\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DF_Fact_order_history\Slowly Changing Dimension.Outputs[Changing Attribute Updates Output]"
+                  description="These rows contain new information for ChangingAttribute (Type 1) column changes"
+                  exclusionGroup="1"
+                  name="Changing Attribute Updates Output"
+                  synchronousInputId="Package\DF_Fact_order_history\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DF_Fact_order_history\Slowly Changing Dimension.Outputs[Historical Attribute Inserts Output]"
+                  description="HistoricalAttribute (Type 2) changes result in these new rows"
+                  exclusionGroup="2"
+                  name="Historical Attribute Inserts Output"
+                  synchronousInputId="Package\DF_Fact_order_history\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DF_Fact_order_history\Slowly Changing Dimension.Outputs[Inferred Member Updates Output]"
+                  description="Information to update unpopulated initial dimension row"
+                  exclusionGroup="1"
+                  name="Inferred Member Updates Output"
+                  synchronousInputId="Package\DF_Fact_order_history\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DF_Fact_order_history\To_Fact_order_History"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="To_Fact_order_History"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Fact_Order_History]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DF_Fact_order_history\To_Fact_order_History.Connections[OleDbConnection]"
+                  connectionManagerID="{066A7ECD-E8B1-46BA-8B3B-0CFBF987C903}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DIINAA_SQLDEV.Gravity_Books_DW]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DF_Fact_order_history\To_Fact_order_History.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DF_Fact_order_history\To_Fact_order_History.Inputs[OLE DB Destination Input].Columns[order_id]"
+                      cachedDataType="i4"
+                      cachedName="order_id"
+                      externalMetadataColumnId="Package\DF_Fact_order_history\To_Fact_order_History.Inputs[OLE DB Destination Input].ExternalColumns[orderID_BK]"
+                      lineageId="Package\DF_Fact_order_history\Fact_History_Source.Outputs[OLE DB Source Output].Columns[order_id]" />
+                    <inputColumn
+                      refId="Package\DF_Fact_order_history\To_Fact_order_History.Inputs[OLE DB Destination Input].Columns[history_id]"
+                      cachedDataType="i4"
+                      cachedName="history_id"
+                      externalMetadataColumnId="Package\DF_Fact_order_history\To_Fact_order_History.Inputs[OLE DB Destination Input].ExternalColumns[History_ID]"
+                      lineageId="Package\DF_Fact_order_history\Fact_History_Source.Outputs[OLE DB Source Output].Columns[history_id]" />
+                    <inputColumn
+                      refId="Package\DF_Fact_order_history\To_Fact_order_History.Inputs[OLE DB Destination Input].Columns[Status_SK]"
+                      cachedDataType="i4"
+                      cachedName="Status_SK"
+                      externalMetadataColumnId="Package\DF_Fact_order_history\To_Fact_order_History.Inputs[OLE DB Destination Input].ExternalColumns[StatusID_FK]"
+                      lineageId="Package\DF_Fact_order_history\Lookup_For_Status_SK.Outputs[Lookup Match Output].Columns[Status_SK]" />
+                    <inputColumn
+                      refId="Package\DF_Fact_order_history\To_Fact_order_History.Inputs[OLE DB Destination Input].Columns[Recieved_DateSK]"
+                      cachedDataType="i4"
+                      cachedName="Recieved_DateSK"
+                      externalMetadataColumnId="Package\DF_Fact_order_history\To_Fact_order_History.Inputs[OLE DB Destination Input].ExternalColumns[Recived_at_Date_fk]"
+                      lineageId="Package\DF_Fact_order_history\Lookup_Recieved_at_dateSK.Outputs[Lookup Match Output].Columns[Recieved_DateSK]" />
+                    <inputColumn
+                      refId="Package\DF_Fact_order_history\To_Fact_order_History.Inputs[OLE DB Destination Input].Columns[PedningDelivery_DateSK]"
+                      cachedDataType="i4"
+                      cachedName="PedningDelivery_DateSK"
+                      externalMetadataColumnId="Package\DF_Fact_order_history\To_Fact_order_History.Inputs[OLE DB Destination Input].ExternalColumns[Pending_delivery_at_Date_fk]"
+                      lineageId="Package\DF_Fact_order_history\Lookup_pending_Delivery_DateSK.Outputs[Lookup Match Output].Columns[PedningDelivery_DateSK]" />
+                    <inputColumn
+                      refId="Package\DF_Fact_order_history\To_Fact_order_History.Inputs[OLE DB Destination Input].Columns[DeliveryInProgress_DateSK]"
+                      cachedDataType="i4"
+                      cachedName="DeliveryInProgress_DateSK"
+                      externalMetadataColumnId="Package\DF_Fact_order_history\To_Fact_order_History.Inputs[OLE DB Destination Input].ExternalColumns[Delivery_in_Progress_Date_fk]"
+                      lineageId="Package\DF_Fact_order_history\Lookup_DeliveryInProgress_DateSk.Outputs[Lookup Match Output].Columns[DeliveryInProgress_DateSK]" />
+                    <inputColumn
+                      refId="Package\DF_Fact_order_history\To_Fact_order_History.Inputs[OLE DB Destination Input].Columns[Delivered_DateSK]"
+                      cachedDataType="i4"
+                      cachedName="Delivered_DateSK"
+                      externalMetadataColumnId="Package\DF_Fact_order_history\To_Fact_order_History.Inputs[OLE DB Destination Input].ExternalColumns[Delivered_at_Date_fk]"
+                      lineageId="Package\DF_Fact_order_history\Lookup_Delivered_DateSK.Outputs[Lookup Match Output].Columns[Delivered_DateSK]" />
+                    <inputColumn
+                      refId="Package\DF_Fact_order_history\To_Fact_order_History.Inputs[OLE DB Destination Input].Columns[Returned_DateSK]"
+                      cachedDataType="i4"
+                      cachedName="Returned_DateSK"
+                      externalMetadataColumnId="Package\DF_Fact_order_history\To_Fact_order_History.Inputs[OLE DB Destination Input].ExternalColumns[Returned_at_Date_fk]"
+                      lineageId="Package\DF_Fact_order_history\Lookup_Returned_DateSK.Outputs[Lookup Match Output].Columns[Returned_DateSK]" />
+                    <inputColumn
+                      refId="Package\DF_Fact_order_history\To_Fact_order_History.Inputs[OLE DB Destination Input].Columns[Cancelled_DateSK]"
+                      cachedDataType="i4"
+                      cachedName="Cancelled_DateSK"
+                      externalMetadataColumnId="Package\DF_Fact_order_history\To_Fact_order_History.Inputs[OLE DB Destination Input].ExternalColumns[Cancelled_at_Date_fk]"
+                      lineageId="Package\DF_Fact_order_history\Lookup_Cancelled_DateSK.Outputs[Lookup Match Output].Columns[Cancelled_DateSK]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DF_Fact_order_history\To_Fact_order_History.Inputs[OLE DB Destination Input].ExternalColumns[Fact_History_Sk]"
+                      dataType="i4"
+                      name="Fact_History_Sk" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Fact_order_history\To_Fact_order_History.Inputs[OLE DB Destination Input].ExternalColumns[orderID_BK]"
+                      dataType="i4"
+                      name="orderID_BK" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Fact_order_history\To_Fact_order_History.Inputs[OLE DB Destination Input].ExternalColumns[History_ID]"
+                      dataType="i4"
+                      name="History_ID" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Fact_order_history\To_Fact_order_History.Inputs[OLE DB Destination Input].ExternalColumns[StatusID_FK]"
+                      dataType="i4"
+                      name="StatusID_FK" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Fact_order_history\To_Fact_order_History.Inputs[OLE DB Destination Input].ExternalColumns[Recived_at_Date_fk]"
+                      dataType="i4"
+                      name="Recived_at_Date_fk" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Fact_order_history\To_Fact_order_History.Inputs[OLE DB Destination Input].ExternalColumns[Pending_delivery_at_Date_fk]"
+                      dataType="i4"
+                      name="Pending_delivery_at_Date_fk" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Fact_order_history\To_Fact_order_History.Inputs[OLE DB Destination Input].ExternalColumns[Delivery_in_Progress_Date_fk]"
+                      dataType="i4"
+                      name="Delivery_in_Progress_Date_fk" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Fact_order_history\To_Fact_order_History.Inputs[OLE DB Destination Input].ExternalColumns[Delivered_at_Date_fk]"
+                      dataType="i4"
+                      name="Delivered_at_Date_fk" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Fact_order_history\To_Fact_order_History.Inputs[OLE DB Destination Input].ExternalColumns[Returned_at_Date_fk]"
+                      dataType="i4"
+                      name="Returned_at_Date_fk" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Fact_order_history\To_Fact_order_History.Inputs[OLE DB Destination Input].ExternalColumns[Cancelled_at_Date_fk]"
+                      dataType="i4"
+                      name="Cancelled_at_Date_fk" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Fact_order_history\To_Fact_order_History.Inputs[OLE DB Destination Input].ExternalColumns[Created_at]"
+                      dataType="dbTimeStamp"
+                      name="Created_at" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DF_Fact_order_history\To_Fact_order_History.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DF_Fact_order_history\To_Fact_order_History.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF_Fact_order_history\To_Fact_order_History.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DF_Fact_order_history\To_Fact_order_History.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DF_Fact_order_history\To_Fact_order_History.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DF_Fact_order_history\To_Fact_order_History.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DF_Fact_order_history.Paths[Changing Attribute Updates Output]"
+              endId="Package\DF_Fact_order_history\OLE DB Command.Inputs[OLE DB Command Input]"
+              name="Changing Attribute Updates Output"
+              startId="Package\DF_Fact_order_history\Slowly Changing Dimension.Outputs[Changing Attribute Updates Output]" />
+            <path
+              refId="Package\DF_Fact_order_history.Paths[Lookup Match Output]"
+              endId="Package\DF_Fact_order_history\Lookup_Recieved_at_dateSK.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\DF_Fact_order_history\Lookup_For_Status_SK.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\DF_Fact_order_history.Paths[Lookup Match Output1]"
+              endId="Package\DF_Fact_order_history\Lookup_pending_Delivery_DateSK.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\DF_Fact_order_history\Lookup_Recieved_at_dateSK.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\DF_Fact_order_history.Paths[Lookup Match Output2]"
+              endId="Package\DF_Fact_order_history\Lookup_DeliveryInProgress_DateSk.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\DF_Fact_order_history\Lookup_pending_Delivery_DateSK.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\DF_Fact_order_history.Paths[Lookup Match Output3]"
+              endId="Package\DF_Fact_order_history\Lookup_Delivered_DateSK.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\DF_Fact_order_history\Lookup_DeliveryInProgress_DateSk.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\DF_Fact_order_history.Paths[Lookup Match Output4]"
+              endId="Package\DF_Fact_order_history\Lookup_Returned_DateSK.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\DF_Fact_order_history\Lookup_Delivered_DateSK.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\DF_Fact_order_history.Paths[Lookup Match Output5]"
+              endId="Package\DF_Fact_order_history\Lookup_Cancelled_DateSK.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\DF_Fact_order_history\Lookup_Returned_DateSK.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\DF_Fact_order_history.Paths[Lookup Match Output6]"
+              endId="Package\DF_Fact_order_history\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]"
+              name="Lookup Match Output"
+              startId="Package\DF_Fact_order_history\Lookup_Cancelled_DateSK.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\DF_Fact_order_history.Paths[New Output]"
+              endId="Package\DF_Fact_order_history\To_Fact_order_History.Inputs[OLE DB Destination Input]"
+              name="New Output"
+              startId="Package\DF_Fact_order_history\Slowly Changing Dimension.Outputs[New Output]" />
+            <path
+              refId="Package\DF_Fact_order_history.Paths[OLE DB Source Output]"
+              endId="Package\DF_Fact_order_history\Lookup_For_Status_SK.Inputs[Lookup Input]"
+              name="OLE DB Source Output"
+              startId="Package\DF_Fact_order_history\Fact_History_Source.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="184.8,41.6"
+          Id="Package\DF_Fact_order_history"
+          TopLeft="209.285714731229,159.058823389991" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\DF_Fact_order_history">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="216,41.6"
+          Id="Package\DF_Fact_order_history\Lookup_Recieved_at_dateSK"
+          TopLeft="413.414286162841,67.2294118887103" />
+        <NodeLayout
+          Size="164.8,41.6"
+          Id="Package\DF_Fact_order_history\OLE DB Command"
+          TopLeft="419.907143265024,483.061765088788" />
+        <NodeLayout
+          Size="185.6,41.6"
+          Id="Package\DF_Fact_order_history\To_Fact_order_History"
+          TopLeft="156.928571750923,483.82647097047" />
+        <NodeLayout
+          Size="203.2,41.6"
+          Id="Package\DF_Fact_order_history\Lookup_Cancelled_DateSK"
+          TopLeft="49.2785710883535,306.62647094768" />
+        <NodeLayout
+          Size="245.6,41.6"
+          Id="Package\DF_Fact_order_history\Lookup_DeliveryInProgress_DateSk"
+          TopLeft="433.435714808395,153.811764932107" />
+        <NodeLayout
+          Size="246.4,41.6"
+          Id="Package\DF_Fact_order_history\Lookup_pending_Delivery_DateSK"
+          TopLeft="39.2857139702049,147.800000142438" />
+        <NodeLayout
+          Size="201.6,41.6"
+          Id="Package\DF_Fact_order_history\Lookup_Returned_DateSK"
+          TopLeft="450.971429084606,230.835294454469" />
+        <NodeLayout
+          Size="208,41.6"
+          Id="Package\DF_Fact_order_history\Slowly Changing Dimension"
+          TopLeft="269.200000133046,385.667647438042" />
+        <NodeLayout
+          Size="174.4,41.6"
+          Id="Package\DF_Fact_order_history\Fact_History_Source"
+          TopLeft="223.5,5.49999999999995" />
+        <NodeLayout
+          Size="202.4,41.6"
+          Id="Package\DF_Fact_order_history\Lookup_Delivered_DateSK"
+          TopLeft="54.1428568121426,228.647059073214" />
+        <NodeLayout
+          Size="186.4,41.6"
+          Id="Package\DF_Fact_order_history\Lookup_For_Status_SK"
+          TopLeft="63.9285711016582,73.6441176763842" />
+        <EdgeLayout
+          Id="Package\DF_Fact_order_history.Paths[Lookup Match Output]"
+          TopLeft="250.328571101658,91.2367647825472">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="163.085715061183,0"
+              Start="0,0"
+              End="155.585715061183,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="155.585715061183,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="29.6014708118415,5,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DF_Fact_order_history.Paths[Changing Attribute Updates Output]"
+          TopLeft="406.533333466379,427.267647438042">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="95.7738097986446,55.7941176507458"
+              Start="0,0"
+              End="95.7738097986446,48.2941176507458">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,18.5731926373246" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,18.5731926373246"
+                    Point2="0,22.5731926373246"
+                    Point3="4,22.5731926373246" />
+                  <mssgle:LineSegment
+                    End="91.7738097986446,22.5731926373246" />
+                  <mssgle:CubicBezierSegment
+                    Point1="91.7738097986446,22.5731926373246"
+                    Point2="95.7738097986446,22.5731926373246"
+                    Point3="95.7738097986446,26.5731926373246" />
+                  <mssgle:LineSegment
+                    End="95.7738097986446,48.2941176507458" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-30.6470013506777,27.5731926373246,157.0678125,11.6630859375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DF_Fact_order_history.Paths[OLE DB Source Output]"
+          TopLeft="310.7,47.1">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-153.571428898342,26.5441176763842"
+              Start="0,0"
+              End="-153.571428898342,19.0441176763842">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,9.27205883819212" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,9.27205883819212"
+                    Point2="0,13.2720588381921"
+                    Point3="-4,13.2720588381921" />
+                  <mssgle:LineSegment
+                    End="-149.571428898342,13.2720588381921" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-149.571428898342,13.2720588381921"
+                    Point2="-153.571428898342,13.2720588381921"
+                    Point3="-153.571428898342,17.2720588381921" />
+                  <mssgle:LineSegment
+                    End="-153.571428898342,19.0441176763842" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DF_Fact_order_history.Paths[New Output]"
+          TopLeft="339.866666799713,427.267647438042">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-90.1380950487896,56.5588235324286"
+              Start="0,0"
+              End="-90.1380950487896,49.0588235324286">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,18.8825774596848" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,18.8825774596848"
+                    Point2="0,22.8825774596848"
+                    Point3="-4,22.8825774596848" />
+                  <mssgle:LineSegment
+                    End="-86.1380950487896,22.8825774596848" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-86.1380950487896,22.8825774596848"
+                    Point2="-90.1380950487896,22.8825774596848"
+                    Point3="-90.1380950487896,26.8825774596848" />
+                  <mssgle:LineSegment
+                    End="-90.1380950487896,49.0588235324286" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-72.1604342431448,27.8825774596848,54.1827734375,11.43359375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DF_Fact_order_history.Paths[Lookup Match Output6]"
+          TopLeft="150.878571088354,348.22647094768">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="222.321429044693,37.4411764903624"
+              Start="0,0"
+              End="222.321429044693,29.9411764903624">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,14.7205882451812" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,14.7205882451812"
+                    Point2="0,18.7205882451812"
+                    Point3="4,18.7205882451812" />
+                  <mssgle:LineSegment
+                    End="218.321429044693,18.7205882451812" />
+                  <mssgle:CubicBezierSegment
+                    Point1="218.321429044693,18.7205882451812"
+                    Point2="222.321429044693,18.7205882451812"
+                    Point3="222.321429044693,22.7205882451812" />
+                  <mssgle:LineSegment
+                    End="222.321429044693,29.9411764903624" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="62.9693278035963,23.7205882451812,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DF_Fact_order_history.Paths[Lookup Match Output5]"
+          TopLeft="551.771429084606,272.435294454469">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-400.892857996253,34.1911764932105"
+              Start="0,0"
+              End="-400.892857996253,26.6911764932105">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,13.0955882466053" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,13.0955882466053"
+                    Point2="0,17.0955882466053"
+                    Point3="-4,17.0955882466053" />
+                  <mssgle:LineSegment
+                    End="-396.892857996253,17.0955882466053" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-396.892857996253,17.0955882466053"
+                    Point2="-400.892857996253,17.0955882466053"
+                    Point3="-400.892857996253,21.0955882466053" />
+                  <mssgle:LineSegment
+                    End="-400.892857996253,26.6911764932105" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-248.637815716876,22.0955882466053,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DF_Fact_order_history.Paths[Lookup Match Output4]"
+          TopLeft="256.542856812143,250.541176763842">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="194.428572272463,0"
+              Start="0,0"
+              End="186.928572272463,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="186.928572272463,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="45.2728994174817,5,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DF_Fact_order_history.Paths[Lookup Match Output3]"
+          TopLeft="556.235714808395,195.411764932107">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-400.892857996253,33.2352941411072"
+              Start="0,0"
+              End="-400.892857996253,25.7352941411072">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,12.6176470705536" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,12.6176470705536"
+                    Point2="0,16.6176470705536"
+                    Point3="-4,16.6176470705536" />
+                  <mssgle:LineSegment
+                    End="-396.892857996253,16.6176470705536" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-396.892857996253,16.6176470705536"
+                    Point2="-400.892857996253,16.6176470705536"
+                    Point3="-400.892857996253,20.6176470705536" />
+                  <mssgle:LineSegment
+                    End="-400.892857996253,25.7352941411072" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-248.637815716876,21.6176470705536,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DF_Fact_order_history.Paths[Lookup Match Output2]"
+          TopLeft="285.685713970205,174.405882537272">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="147.75000083819,0"
+              Start="0,0"
+              End="140.25000083819,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="140.25000083819,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="21.9336137003452,5,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DF_Fact_order_history.Paths[Lookup Match Output1]"
+          TopLeft="521.414286162841,108.82941188871">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-358.928572192636,38.9705882537273"
+              Start="0,0"
+              End="-358.928572192636,31.4705882537273">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,15.4852941268636" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,15.4852941268636"
+                    Point2="0,19.4852941268636"
+                    Point3="-4,19.4852941268636" />
+                  <mssgle:LineSegment
+                    End="-354.928572192636,19.4852941268636" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-354.928572192636,19.4852941268636"
+                    Point2="-358.928572192636,19.4852941268636"
+                    Point3="-358.928572192636,23.4852941268636" />
+                  <mssgle:LineSegment
+                    End="-358.928572192636,31.4705882537273" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-227.655672815068,24.4852941268636,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DF_Fact_order_history\Lookup_Recieved_at_dateSK">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DF_Fact_order_history\Lookup_Cancelled_DateSK">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DF_Fact_order_history\Lookup_DeliveryInProgress_DateSk">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DF_Fact_order_history\Lookup_pending_Delivery_DateSK">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DF_Fact_order_history\Lookup_Returned_DateSK">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DF_Fact_order_history\Slowly Changing Dimension">
+    <Properties>
+      <Property>
+        <Name>SCDMetadata</Name>
+        <Value
+          type="q2:string">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SCDWizardMetadata xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
+  &lt;ConnectionID&gt;{066A7ECD-E8B1-46BA-8B3B-0CFBF987C903}&lt;/ConnectionID&gt;
+  &lt;TableName&gt;[dbo].[Fact_Order_History]&lt;/TableName&gt;
+  &lt;InputToColumnsCollection&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Lookup_Cancelled_DateSK.Outputs[Lookup Match Output].Columns[Cancelled_DateSK]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;Cancelled_at_Date_fk&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Lookup_Delivered_DateSK.Outputs[Lookup Match Output].Columns[Delivered_DateSK]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;Delivered_at_Date_fk&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Lookup_DeliveryInProgress_DateSk.Outputs[Lookup Match Output].Columns[DeliveryInProgress_DateSK]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;Delivery_in_Progress_Date_fk&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Fact_History_Source.Outputs[OLE DB Source Output].Columns[history_id]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;History_ID&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Fact_History_Source.Outputs[OLE DB Source Output].Columns[order_id]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;orderID_BK&lt;/ColumnName&gt;
+      &lt;KeyType&gt;BusinessKey&lt;/KeyType&gt;
+      &lt;ChangeType&gt;None&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Lookup_pending_Delivery_DateSK.Outputs[Lookup Match Output].Columns[PedningDelivery_DateSK]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;Pending_delivery_at_Date_fk&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Lookup_Recieved_at_dateSK.Outputs[Lookup Match Output].Columns[Recieved_DateSK]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;Recived_at_Date_fk&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Lookup_Returned_DateSK.Outputs[Lookup Match Output].Columns[Returned_DateSK]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;Returned_at_Date_fk&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Lookup_For_Status_SK.Outputs[Lookup Match Output].Columns[Status_SK]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;StatusID_FK&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+  &lt;/InputToColumnsCollection&gt;
+  &lt;GeneratedComponentsIdentificationStrings&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;Insert Destination&lt;/anyType&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;OLE DB Command&lt;/anyType&gt;
+  &lt;/GeneratedComponentsIdentificationStrings&gt;
+  &lt;FailFixedAttribute&gt;false&lt;/FailFixedAttribute&gt;
+  &lt;FailChangeAttribute&gt;true&lt;/FailChangeAttribute&gt;
+  &lt;UseStartEndDate&gt;false&lt;/UseStartEndDate&gt;
+  &lt;CurrentIndicatorColumn /&gt;
+  &lt;InferredIndicatorColumn /&gt;
+  &lt;ValueCurrent /&gt;
+  &lt;ValueExpired /&gt;
+  &lt;StartDateColumn /&gt;
+  &lt;EndDateColumn /&gt;
+  &lt;DateVariable /&gt;
+  &lt;EnableInferredSupport&gt;false&lt;/EnableInferredSupport&gt;
+&lt;/SCDWizardMetadata&gt;</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DF_Fact_order_history\Fact_History_Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DF_Fact_order_history\Lookup_Delivered_DateSK">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DF_Fact_order_history\Lookup_For_Status_SK">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
