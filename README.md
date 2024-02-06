@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,6 +11,7 @@
 
   <h1>Gravity Books Data Warehouse</h1>
 
+  
 
   <p><strong>Gravity Books Data Warehouse</strong> is a comprehensive project that involves the creation of a data warehouse
     for managing and analyzing book-related data using Microsoft SQL Server technologies.</p>
@@ -42,8 +44,9 @@
   <h2>Datawarehouse Schema</h2>
 
   <p>The Snowflake schema used in this project provides a structured and normalized approach to organizing the data. For a
-    visual representation, refer to the <a href="DWH_Modelling_Diagram.png">Schema Diagram</a>.</p>
+    visual representation.</p>
 
+  <img src="DWH_Modelling_Diagram.png" alt="Snowflake Schema Diagram" />
 
   <h2>Implementation</h2>
 
