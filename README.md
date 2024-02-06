@@ -43,17 +43,16 @@
 
   <h2>Datawarehouse Schema</h2>
 
-  <p>The Snowflake schema used in this project provides a structured and normalized approach to organizing the data. For a
-    visual representation.</p>
+  <p>The Snowflake schema used in this project provides a structured and normalized approach to organizing the data.</p>
 
-  <img src="DWH_Modelling_Diagram.png" alt="Snowflake Schema Diagram" />
+  <img src="DWH_Modelling_Diagram.png" alt="Snowflake Schema Diagram" width=200 height = 200 />
 
   <h2>Implementation</h2>
 
   <h3>SSMS</h3>
 
   <p>The implementation of the data warehouse schema is carried out using SQL Server Management Studio (SSMS). All scripts
-    and queries can be found in the <a href="sql-scripts/">SQL Scripts</a> directory.</p>
+    and queries can be found in the <a href="DDL&DMl_Queries/">SQL Scripts</a> directory.</p>
 
   <h3>SSIS</h3>
 
@@ -68,7 +67,7 @@
   <h3>Power BI</h3>
 
   <p>Power BI is used to create interactive and visually appealing dashboards for the Gravity Books Data Warehouse. A
-    sample dashboard can be found in the <a href="power-bi-dashboard/">Power BI Dashboard</a> directory.</p>
+    sample dashboard can be found in the <a href="Gravity_Books_Dashboard/">Power BI Dashboard</a> directory.</p>
 
   <h2>Installation</h2>
 
