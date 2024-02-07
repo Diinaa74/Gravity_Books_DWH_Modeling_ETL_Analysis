@@ -19,70 +19,70 @@
     <ObjectSnapshots>
       <ObjectSnapshot>
         <Type>Microsoft.AnalysisServices.RelationalDataSource</Type>
-        <TimeStamp>DcsUWrq/BWn9KRwRkjtuuESpj2E=1/31/2024 2:45:41 AM1/31/2024 2:45:41 AM</TimeStamp>
+        <TimeStamp>DcsUWrq/BWn9KRwRkjtuuESpj2E=1/31/2024 2:45:41 AM2/6/2024 11:37:13 PM</TimeStamp>
         <ID>
           <String>Gravity Books DW</String>
         </ID>
       </ObjectSnapshot>
       <ObjectSnapshot>
         <Type>Microsoft.AnalysisServices.DataSourceView</Type>
-        <TimeStamp>8BFpDIXEG8gH3Up73IEGqxCc5O4=1/31/2024 2:46:05 AM1/31/2024 2:46:05 AM</TimeStamp>
+        <TimeStamp>8BFpDIXEG8gH3Up73IEGqxCc5O4=1/31/2024 2:46:05 AM2/6/2024 11:37:13 PM</TimeStamp>
         <ID>
           <String>Gravity Books DW_view</String>
         </ID>
       </ObjectSnapshot>
       <ObjectSnapshot>
         <Type>Microsoft.AnalysisServices.Dimension</Type>
-        <TimeStamp>4U5pZkzaRMg/GtzwcOEUw2adYr4=1/31/2024 2:50:43 AM1/31/2024 2:48:25 AM</TimeStamp>
+        <TimeStamp>4U5pZkzaRMg/GtzwcOEUw2adYr4=1/31/2024 2:50:43 AM2/6/2024 11:37:13 PM</TimeStamp>
         <ID>
           <String>Dim Author</String>
         </ID>
       </ObjectSnapshot>
       <ObjectSnapshot>
         <Type>Microsoft.AnalysisServices.Dimension</Type>
-        <TimeStamp>GlhH/IgINDv4VEei3+ftpyhaLmk=1/31/2024 2:49:46 AM1/31/2024 2:48:25 AM</TimeStamp>
+        <TimeStamp>GlhH/IgINDv4VEei3+ftpyhaLmk=1/31/2024 2:49:46 AM2/6/2024 11:37:13 PM</TimeStamp>
         <ID>
           <String>Dim Book</String>
         </ID>
       </ObjectSnapshot>
       <ObjectSnapshot>
         <Type>Microsoft.AnalysisServices.Dimension</Type>
-        <TimeStamp>k8dipMQp5n3zBQWUQfxQwB8M2HA=1/31/2024 2:50:43 AM1/31/2024 2:48:25 AM</TimeStamp>
+        <TimeStamp>k8dipMQp5n3zBQWUQfxQwB8M2HA=1/31/2024 2:50:43 AM2/6/2024 11:37:13 PM</TimeStamp>
         <ID>
           <String>Dim Address</String>
         </ID>
       </ObjectSnapshot>
       <ObjectSnapshot>
         <Type>Microsoft.AnalysisServices.Dimension</Type>
-        <TimeStamp>BR3Am3SYk/h7M+q/qlK6TPd+P/g=1/31/2024 2:49:46 AM1/31/2024 2:48:25 AM</TimeStamp>
+        <TimeStamp>BR3Am3SYk/h7M+q/qlK6TPd+P/g=1/31/2024 2:49:46 AM2/6/2024 11:37:13 PM</TimeStamp>
         <ID>
           <String>Dim Customer</String>
         </ID>
       </ObjectSnapshot>
       <ObjectSnapshot>
         <Type>Microsoft.AnalysisServices.Dimension</Type>
-        <TimeStamp>gHqf+s896mV06ug85TFh03qwSaY=1/31/2024 2:50:43 AM1/31/2024 2:48:25 AM</TimeStamp>
+        <TimeStamp>gHqf+s896mV06ug85TFh03qwSaY=1/31/2024 2:50:43 AM2/6/2024 11:37:13 PM</TimeStamp>
         <ID>
           <String>Dim Status</String>
         </ID>
       </ObjectSnapshot>
       <ObjectSnapshot>
         <Type>Microsoft.AnalysisServices.Dimension</Type>
-        <TimeStamp>+l41MwaSc3e57b2wxrBNRf8p8TM=1/31/2024 2:49:46 AM1/31/2024 2:48:25 AM</TimeStamp>
+        <TimeStamp>+l41MwaSc3e57b2wxrBNRf8p8TM=1/31/2024 2:49:46 AM2/6/2024 11:37:13 PM</TimeStamp>
         <ID>
           <String>Dim Date</String>
         </ID>
       </ObjectSnapshot>
       <ObjectSnapshot>
         <Type>Microsoft.AnalysisServices.Dimension</Type>
-        <TimeStamp>v9hdtovrcr/4kiJig19GslgEDCU=1/31/2024 2:49:46 AM1/31/2024 2:48:25 AM</TimeStamp>
+        <TimeStamp>v9hdtovrcr/4kiJig19GslgEDCU=1/31/2024 2:49:46 AM2/6/2024 11:37:13 PM</TimeStamp>
         <ID>
           <String>Dim Shipping Method</String>
         </ID>
       </ObjectSnapshot>
       <ObjectSnapshot>
         <Type>Microsoft.AnalysisServices.Cube</Type>
-        <TimeStamp>uEqODEj/U1UktA0N0ib2LLhauEU=1/31/2024 2:50:43 AM1/31/2024 2:48:25 AMsFwEbVemsCvpD8FF1qrjg2gKbMA=1/31/2024 2:48:25 AM1/31/2024 2:48:25 AM</TimeStamp>
+        <TimeStamp>RNiCIry8rqElpDQhOt1WuQftKJs=2/7/2024 2:59:24 AM2/6/2024 11:37:13 PMHl8jBFuyoX1+Ww7zKeTl+vQVlMA=2/7/2024 2:59:24 AM2/6/2024 11:37:13 PM</TimeStamp>
         <ID>
           <String>Gravity Books DW_Cube</String>
         </ID>
@@ -90,7 +90,7 @@
     </ObjectSnapshots>
     <DatabaseSnapshot>
       <Type>Microsoft.AnalysisServices.Database</Type>
-      <TimeStamp>/wevXRlAAQdyuLHyizJy3wp3fSs=1/31/2024 2:45:06 AM1/31/2024 2:45:06 AM</TimeStamp>
+      <TimeStamp>/wevXRlAAQdyuLHyizJy3wp3fSs=1/31/2024 2:45:06 AM2/6/2024 11:37:13 PM</TimeStamp>
       <ID>
         <String>Gravity_Books</String>
       </ID>
@@ -99,5 +99,5 @@
   </Snapshot>
   <AssemblyLocations />
   <ProcessingComplete>true</ProcessingComplete>
-  <LastDeployed>2024-01-31T00:50:45.826667Z</LastDeployed>
+  <LastDeployed>2024-02-07T00:59:31.77Z</LastDeployed>
 </DeploymentSnapshot>

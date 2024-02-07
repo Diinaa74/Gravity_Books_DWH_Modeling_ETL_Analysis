@@ -1,17 +1,17 @@
-﻿<Cube xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0" dwd:design-time-name="180def6c-e444-47f7-9ef8-bbebcaf1e1ac" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
+﻿<Cube xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0" dwd:design-time-name="39740625-dc5e-4b5d-bd50-8b55f3cb8ab0" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
   <ID>Gravity Books DW_Cube</ID>
   <MeasureGroups>
     <MeasureGroup>
       <ID>Book Author</ID>
       <Partitions>
-        <Partition dwd:design-time-name="76ef5be2-8e2a-4c19-9519-146da3662a6d">
+        <Partition dwd:design-time-name="ce3bd387-bf3e-472a-a18b-b2c565abda3f">
           <ID>Book Author</ID>
           <Name>Book Author</Name>
           <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
           <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
           <LastProcessed>0001-01-01T00:00:00Z</LastProcessed>
           <State>Unprocessed</State>
-          <Source xsi:type="DsvTableBinding" dwd:design-time-name="cb7297ba-d30c-4482-8f9c-2c927ec453ee">
+          <Source xsi:type="DsvTableBinding" dwd:design-time-name="debc2c92-e5fd-4fb8-9698-d3879faedb18">
             <DataSourceViewID>Gravity Books DW_view</DataSourceViewID>
             <TableID>dbo_Book_Author</TableID>
           </Source>
@@ -24,14 +24,14 @@
     <MeasureGroup>
       <ID>Customer Address</ID>
       <Partitions>
-        <Partition dwd:design-time-name="460b6dbe-1b1e-4203-80d8-d36f4948116e">
+        <Partition dwd:design-time-name="666b5dbd-be0c-462b-b17f-1e01ac821a02">
           <ID>Customer Address</ID>
           <Name>Customer Address</Name>
           <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
           <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
           <LastProcessed>0001-01-01T00:00:00Z</LastProcessed>
           <State>Unprocessed</State>
-          <Source xsi:type="DsvTableBinding" dwd:design-time-name="9c78a83b-25d8-4cea-8232-88e7433fd805">
+          <Source xsi:type="DsvTableBinding" dwd:design-time-name="90493c0f-ef14-4f3a-be3a-8ad41ab8df29">
             <DataSourceViewID>Gravity Books DW_view</DataSourceViewID>
             <TableID>dbo_Customer_Address</TableID>
           </Source>
@@ -44,14 +44,14 @@
     <MeasureGroup>
       <ID>Fact Order History</ID>
       <Partitions>
-        <Partition dwd:design-time-name="057e7c20-109a-47d3-89e7-e306bcea3b20">
+        <Partition dwd:design-time-name="30bab63b-10b4-4aec-88af-ea2712dd3508">
           <ID>Fact Order History</ID>
           <Name>Fact Order History</Name>
           <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
           <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
           <LastProcessed>0001-01-01T00:00:00Z</LastProcessed>
           <State>Unprocessed</State>
-          <Source xsi:type="DsvTableBinding" dwd:design-time-name="0e5d6ac1-3bd6-470e-aab2-71acbd482be4">
+          <Source xsi:type="DsvTableBinding" dwd:design-time-name="b0309578-a097-4e3b-afcc-8805826535da">
             <DataSourceViewID>Gravity Books DW_view</DataSourceViewID>
             <TableID>dbo_Fact_Order_History</TableID>
           </Source>
@@ -64,14 +64,34 @@
     <MeasureGroup>
       <ID>Fact Order Sales</ID>
       <Partitions>
-        <Partition dwd:design-time-name="02cf73c0-feb7-43ad-8701-69b26b0e62ae">
+        <Partition dwd:design-time-name="71c6d3cf-b0d3-4448-84b5-94d0785a9503">
           <ID>Fact Order Sales</ID>
           <Name>Fact Order Sales</Name>
           <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
           <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
           <LastProcessed>0001-01-01T00:00:00Z</LastProcessed>
           <State>Unprocessed</State>
-          <Source xsi:type="DsvTableBinding" dwd:design-time-name="ed4d1205-747d-4a5d-bfb2-ade27f2a9329">
+          <Source xsi:type="DsvTableBinding" dwd:design-time-name="6a7077b6-1737-49da-9566-9c6654e57226">
+            <DataSourceViewID>Gravity Books DW_view</DataSourceViewID>
+            <TableID>dbo_Fact_order_sales</TableID>
+          </Source>
+          <StorageMode>Molap</StorageMode>
+          <CurrentStorageMode>Molap</CurrentStorageMode>
+          <ProcessingMode>Regular</ProcessingMode>
+        </Partition>
+      </Partitions>
+    </MeasureGroup>
+    <MeasureGroup>
+      <ID>Fact Order Sales 1</ID>
+      <Partitions>
+        <Partition dwd:design-time-name="6f19b6b7-6a2a-421a-ac25-fd7589465db2">
+          <ID>Fact Order Sales</ID>
+          <Name>Fact Order Sales</Name>
+          <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
+          <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
+          <LastProcessed>0001-01-01T00:00:00Z</LastProcessed>
+          <State>Unprocessed</State>
+          <Source xsi:type="DsvTableBinding" dwd:design-time-name="59dc3b5e-d53c-40f5-9a7a-a38313c5a8d0">
             <DataSourceViewID>Gravity Books DW_view</DataSourceViewID>
             <TableID>dbo_Fact_order_sales</TableID>
           </Source>

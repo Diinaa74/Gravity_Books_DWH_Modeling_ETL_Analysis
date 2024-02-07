@@ -70,6 +70,14 @@
               </Partition>
             </Partitions>
           </MeasureGroup>
+          <MeasureGroup>
+            <ID>Fact Order Sales 1</ID>
+            <Partitions>
+              <Partition>
+                <ID>Fact Order Sales</ID>
+              </Partition>
+            </Partitions>
+          </MeasureGroup>
         </MeasureGroups>
       </Cube>
     </Cubes>
