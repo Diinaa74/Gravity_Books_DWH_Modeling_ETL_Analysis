@@ -11,8 +11,6 @@
 
   <h1>Gravity Books Data Warehouse</h1>
 
-  
-
   <p><strong>Gravity Books Data Warehouse</strong> is a comprehensive project that involves the creation of a data warehouse
     for managing and analyzing book-related data using Microsoft SQL Server technologies.</p>
 
@@ -29,9 +27,7 @@
       </ul>
     </li>
     <li><a href="#installation">Installation</a></li>
-    <li><a href="#usage">Usage</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
+  
   </ul>
 
   <h2>Introduction</h2>
@@ -45,7 +41,7 @@
 
   <p>The Snowflake schema used in this project provides a structured and normalized approach to organizing the data.</p>
 
-  <img src="DWH_Modelling_Diagram.png" alt="Snowflake Schema Diagram" width=200 height = 200 />
+  <img src="DWH_Modelling_Diagram.png" alt="Snowflake Schema Diagram" width=600 height = 400 />
 
   <h2>Implementation</h2>
 
@@ -59,49 +55,52 @@
   <p>SQL Server Integration Services (SSIS) is employed for Extract, Transform, Load (ETL) processes. Special emphasis is
     given to implementing Slowly Changing Dimension (SCD) techniques for maintaining historical data in dimensions.</p>
 
+  <figcaption>SSIS Package - Dim_Book_ETL</figcaption>
+  <img src="ETL_SSIS_Pictures/dimbook.png" alt="Dim_Book_ETL" style="width: 600px; height: 500px;" />
+  
+  <figcaption>SSIS Package - Dim_Customer ETL</figcaption>
+  <img src="ETL_SSIS_Pictures/customer.png" alt="Dim_Customer_ETL" style="width: 600px; height: 500px;" />
+  
+  <figcaption>SSIS Package - Fact_order_Sales ETL</figcaption>
+  <img src="ETL_SSIS_Pictures/fact2.png" alt="Fact_order_Sales_ETL" style="width: 600px; height: 500px;" />
+  
+
   <h3>SSAS</h3>
 
   <p>SQL Server Analysis Services (SSAS) is utilized for multidimensional analysis, providing a deeper insight into the
     book-related data.</p>
+
+  <p float="left">
+  <img src="Analysis_SSAS_pictures/Sales_over_years.png" alt="Sales over year" style="width: 300px; height: 200px;" />
+  &nbsp;&nbsp;&nbsp;
+  <img src="Analysis_SSAS_pictures/numOfOrders_Per_ShippingMethod.png" alt="Num of orders Per Shipping method" style="width: 300px; height: 200px;" />
+</p>
+
 
   <h3>Power BI</h3>
 
   <p>Power BI is used to create interactive and visually appealing dashboards for the Gravity Books Data Warehouse. A
     sample dashboard can be found in the <a href="Gravity_Books_Dashboard/">Power BI Dashboard</a> directory.</p>
 
+    
+  <img src="Gravity_Books_Dashboard/Dashboard.png" alt="Dim_Book_ETL" style="width: 800px; height: 500px;" />
+
   <h2>Installation</h2>
 
   <p>To set up the project locally, follow these steps:</p>
-
-  <ol>
-    <li>Clone the repository:</li>
-    <pre><code>git clone https://github.com/your-username/gravity-books-data-warehouse.git</code></pre>
-
-    <li>Execute the SQL scripts in the <a href="sql-scripts/">SQL Scripts</a> directory using SSMS to create the data
-      warehouse schema.</li>
-
-    <li>Set up SSIS packages by importing and configuring the packages in the <a href="ssis-packages/">SSIS
+<ol>
+  <li> Clone the repository:</li>
+  <pre><code>git clone https://github.com/your-username/gravity-books-data-warehouse.git</code></pre>
+  <li>Execute the SQL scripts in the <a href="DDL&DMl_Queries/">SQL Scripts</a> directory using SSMS to create the data
+      warehouse schema. </li>
+  <li>Set up SSIS packages by importing and configuring the packages in the <a href="Gravity_Books_DWH_ETL_SSIS/">SSIS
         Packages</a> directory.</li>
-
-    <li>Deploy and process SSAS cubes using SQL Server Data Tools or Visual Studio.</li>
-
-    <li>Open the Power BI Dashboard file in <a href="power-bi-dashboard/">Power BI Dashboard</a> and configure the data
+  <li>Deploy and process SSAS cubes using in the <a href="Gravity_Books_analysis_With_SSAS/">SSAS
+        Cube</a> directory.</li>
+  <li>Open the Power BI Dashboard file in <a href="Gravity_Books_Dashboard/">Power BI Dashboard</a> and configure the data
       sources.</li>
-  </ol>
+</ol>
 
-  <h2>Usage</h2>
-
-  <p>Detailed instructions on using and interacting with the Gravity Books Data Warehouse are available in the <a
-      href="docs/usage-guide.md">Usage Guide</a>.</p>
-
-  <h2>Contributing</h2>
-
-  <p>We welcome contributions from the community. To contribute, please follow our <a href="CONTRIBUTING.md">Contribution
-      Guidelines</a>.</p>
-
-  <h2>License</h2>
-
-  <p>This project is licensed under the <a href="LICENSE">MIT License</a>.</p>
 
 </body>
 
