@@ -92,7 +92,9 @@
   <h4>Tableau</h4>
 
   <p>Tableau is another visualization tool employed for creating dynamic and insightful dashboards. Relevant Tableau dashboards can be found in the <a href="Gravity_Books_Dashboards/Tableau/">Tableau Dashboards</a> directory.</p>
-You can interact with dashboard from here: (https://public.tableau.com/app/profile/dina.ahmed1077/viz/Gravity_boks_Dashboard/Dashboard1?publish=yes)
+You can interact with dashboard from here: https://public.tableau.com/app/profile/dina.ahmed1077/viz/Gravity_boks_Dashboard/Dashboard1?publish=yes
+
+
 https://github.com/Diinaa74/Gravity_Books_DWH_Modeling_ETL_Analysis/assets/96499112/65ae9860-c653-4557-9242-58aed35b071b
 
 
