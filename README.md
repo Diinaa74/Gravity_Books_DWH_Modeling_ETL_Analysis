@@ -80,10 +80,10 @@
   <h3>Power BI</h3>
 
   <p>Power BI is used to create interactive and visually appealing dashboards for the Gravity Books Data Warehouse. A
-    sample dashboard can be found in the <a href="Gravity_Books_Dashboard/">Power BI Dashboard</a> directory.</p>
+    sample dashboard can be found in the <a href="Gravity_Books_Dashboards/Power%20BI/">Power BI Dashboard</a> directory.</p>
 
     
-  <img src="Gravity_Books_Dashboard/Dashboard.png" alt="Dim_Book_ETL" style="width: 800px; height: 500px;" />
+  <img src="Gravity_Books_Dashboards/Power%20BI/Dashboard.png" alt="Dim_Book_ETL" style="width: 800px; height: 500px;" />
 
   <h2>Installation</h2>
 
