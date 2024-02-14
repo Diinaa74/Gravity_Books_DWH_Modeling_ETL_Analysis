@@ -23,7 +23,12 @@
         <li><a href="#ssms">SSMS</a></li>
         <li><a href="#ssis">SSIS</a></li>
         <li><a href="#ssas">SSAS</a></li>
-        <li><a href="#power-bi">Power BI</a></li>
+        <li><a href="#dashboards">Dashboards</a>
+          <ul>
+            <li><a href="#power-bi">Power BI</a></li>
+            <li><a href="#tableau">Tableau</a></li>
+          </ul>
+        </li>
       </ul>
     </li>
     <li><a href="#installation">Installation</a></li>
@@ -35,7 +40,7 @@
   <p>The <strong>Gravity Books Data Warehouse</strong> project aims to provide a robust and efficient solution for managing
     book-related data. It incorporates a Snowflake schema, utilizes SQL Server Management Studio (SSMS) for implementation,
     employs Slowly Changing Dimension (SCD) techniques in the Dimensions' ETL using SQL Server Integration Services (SSIS),
-    performs analysis through SQL Server Analysis Services (SSAS), and creates insightful dashboards using Power BI.</p>
+    performs analysis through SQL Server Analysis Services (SSAS), and creates insightful dashboards using Power BI and Tableau.</p>
 
   <h2>Datawarehouse Schema</h2>
 
@@ -63,7 +68,6 @@
   
   <figcaption>SSIS Package - Fact_order_Sales ETL</figcaption>
   <img src="ETL_SSIS_Pictures/fact2.png" alt="Fact_order_Sales_ETL" style="width: 600px; height: 500px;" />
-  
 
   <h3>SSAS</h3>
 
@@ -72,18 +76,25 @@
 
   <p float="left">
   <img src="Analysis_SSAS_pictures/Sales_over_years.png" alt="Sales over year" style="width: 300px; height: 200px;" />
-  &nbsp;&nbsp;&nbsp;
+  &nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;
   <img src="Analysis_SSAS_pictures/numOfOrders_Per_ShippingMethod.png" alt="Num of orders Per Shipping method" style="width: 300px; height: 200px;" />
 </p>
 
+  <h2>Dashboards</h2>
 
-  <h3>Power BI</h3>
+  <h4>Power BI</h4>
 
   <p>Power BI is used to create interactive and visually appealing dashboards for the Gravity Books Data Warehouse. A
     sample dashboard can be found in the <a href="Gravity_Books_Dashboards/Power%20BI/">Power BI Dashboard</a> directory.</p>
 
-    
-  <img src="Gravity_Books_Dashboards/Power%20BI/Dashboard.png" alt="Dim_Book_ETL" style="width: 800px; height: 500px;" />
+  <img src="Gravity_Books_Dashboards/Power%20BI/Dashboard.png" alt="Power BI Dashboard" style="width: 800px; height: 600px;" />
+
+  <h4>Tableau</h4>
+
+  <p>Tableau is another visualization tool employed for creating dynamic and insightful dashboards. Relevant Tableau dashboards can be found in the <a href="Gravity_Books_Dashboards/Tableau/">Tableau Dashboards</a> directory.</p>
+You can interact with dashboard from here: (https://public.tableau.com/app/profile/dina.ahmed1077/viz/Gravity_boks_Dashboard/Dashboard1?publish=yes)
+https://github.com/Diinaa74/Gravity_Books_DWH_Modeling_ETL_Analysis/assets/96499112/65ae9860-c653-4557-9242-58aed35b071b
+
 
   <h2>Installation</h2>
 
@@ -100,7 +111,6 @@
   <li>Open the Power BI Dashboard file in <a href="Gravity_Books_Dashboard/">Power BI Dashboard</a> and configure the data
       sources.</li>
 </ol>
-
 
 </body>
 
